@@ -15,7 +15,7 @@
 
 namespace THPrac {
 bool CheckIfAnyGame();
-bool FindOngoingGame(bool prompt = false);
+bool FindOngoingGame(bool promptNotFound = false, bool promptAsk = true);
 bool FindAndRunGame(bool prompt = false);
 bool RunGameWithTHPrac(THGameSig& gameSig, const wchar_t* const name, bool withVpatch = true);
 }

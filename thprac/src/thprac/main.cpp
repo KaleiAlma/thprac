@@ -125,6 +125,11 @@ bool doCmdLineStuff(PWSTR cmdLine) {
             continue;
         }
 
+        if (wcscmp(argv[i], L"--no-prompt") == 0) {
+            FindOngoingGame(false, false);
+            return true;
+        }
+
         // No actual command line parameter detected, so let's see if it's an exe name
         if (DetectGame(argv[i], &sig)) {
             exeFn = argv[i];

@@ -249,7 +249,7 @@ bool RunGameWithTHPrac(THGameSig& gameSig, const wchar_t* const name, bool withV
     return result;
 }
 
-bool FindOngoingGame(bool prompt)
+bool FindOngoingGame(bool promptNotFound, bool promptAsk)
 {
     bool hasPrompted = false;
 
@@ -266,7 +266,7 @@ bool FindOngoingGame(bool prompt)
                     continue;
                 
                 hasPrompted = true;
-                if (prompt && !PromptUser(PR_ASK_IF_ATTACH, gameSig))
+                if (promptAsk && !PromptUser(PR_ASK_IF_ATTACH, gameSig))
                     continue;
 
                 if (WriteTHPracSig(hProc, base) && LoadSelf(hProc)) {
@@ -283,7 +283,7 @@ bool FindOngoingGame(bool prompt)
         }
     }
 
-    if (prompt && !hasPrompted) {
+    if (promptNotFound && !hasPrompted) {
         PromptUser(PR_INFO_NO_GAME_FOUND);
     }
 
