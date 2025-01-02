@@ -266,7 +266,7 @@ bool FindOngoingGame(bool prompt)
                     continue;
                 
                 hasPrompted = true;
-                if (!PromptUser(PR_ASK_IF_ATTACH, gameSig))
+                if (prompt && !PromptUser(PR_ASK_IF_ATTACH, gameSig))
                     continue;
 
                 if (WriteTHPracSig(hProc, base) && LoadSelf(hProc)) {
